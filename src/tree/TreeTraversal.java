@@ -5,21 +5,7 @@ import java.util.Deque;
 
 public class TreeTraversal {
     public static void main(String[] args) {
-        /*
-                              40
-                             /  \
-                            10  100
-                           /     /
-                          5     15
-                         / \    / \
-                        7   9  77  89
-
-         */
-        TreeNode left = new TreeNode(10);
-        TreeNode right = new TreeNode(100);
-        TreeNode root = new TreeNode(40).withLeftNode(left).withRightNode(right);
-        left.withLeftNode(new TreeNode(5).withLeftNode(new TreeNode(7)).withRightNode(new TreeNode(9)));
-        right.withLeftNode(new TreeNode(15).withLeftNode(new TreeNode(77)).withRightNode(new TreeNode(89)));
+        TreeNode root = TreeNode.createTree();
         System.out.println("Recursive Traversal -");
         inOrderTraversalRecursive(root);
         System.out.println("\nIterative Traversal -");

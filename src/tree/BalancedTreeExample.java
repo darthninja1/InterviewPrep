@@ -1,12 +1,14 @@
 package tree;
 
+import static tree.TreeNode.*;
+
 public class BalancedTreeExample {
     public static void main(String[] args) {
         System.out.println(isBalanced(null));
         System.out.println(isBalanced(new TreeNode(10)));
         System.out.println(isBalanced(new TreeNode(10).withLeftNode(20)));
-        System.out.println(isBalanced(TreeNode.createTree()));
-        System.out.println(isBalanced(TreeNode.createBalancedTree()));
+        System.out.println(isBalanced(createTree()));
+        System.out.println(isBalanced(createBalancedTree()));
     }
 
     private static boolean isBalanced(TreeNode root) {
@@ -17,12 +19,5 @@ public class BalancedTreeExample {
         int rightTreeSize = height(root.right);
 
         return Math.abs(leftTreeSize - rightTreeSize) <= 1 && isBalanced(root.left) && isBalanced(root.right);
-    }
-
-    private static int height(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        return 1 + Math.max(height(root.left), height(root.right));
     }
 }

@@ -9,7 +9,7 @@ public class TopologicalSort {
     static Random random = new Random();
 
     public static void main(String[] args) {
-                /*
+         /*
                        F
                      /   \
               B  -- D      E

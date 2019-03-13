@@ -1,3 +1,5 @@
+package recursive;
+
 // https://www.geeksforgeeks.org/finding-all-subsets-of-a-given-set-in-java/
 // https://leetcode.com/problems/subsets/
 public class GenerateAllSubsets {

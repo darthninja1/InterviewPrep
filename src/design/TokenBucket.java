@@ -1,3 +1,5 @@
+package design;
+
 public class TokenBucket {
     // 10, 100ms, 11, 12...
     // acquire 5 10->5, 6

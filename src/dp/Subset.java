@@ -2,6 +2,12 @@ package dp;
 
 import java.util.Arrays;
 
+/*
+ Variation of -
+    https://www.geeksforgeeks.org/subset-sum-problem-dp-25/
+
+ */
+
 public class Subset {
     public static void main(String[] args) {
 //        System.out.println(subsetRecursive(new int[]{2, 4, 6, 10}, 16, 0));

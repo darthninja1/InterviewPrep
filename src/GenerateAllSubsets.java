@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/finding-all-subsets-of-a-given-set-in-java/
+// https://leetcode.com/problems/subsets/
 public class GenerateAllSubsets {
     public static void main(String[] args) {
         allSubsetsRecursive(new int[]{1, 2, 3}, new Integer[3], 0);
@@ -28,7 +30,7 @@ public class GenerateAllSubsets {
         for (int i = 1; i < Math.pow(2, numbers.length); ++i) {
             System.out.print("{ ");
             for (int j = 0; j <= numbers.length; j++) {
-                if ((i >> j & 1) == 1) {
+                if (((i >> j) & 1) == 1) {
                     System.out.print(numbers[j] + " ");
 
                 }

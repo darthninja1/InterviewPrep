@@ -1,4 +1,4 @@
-package design;
+package interviews;
 
 public class TokenBucket {
     // 10, 100ms, 11, 12...

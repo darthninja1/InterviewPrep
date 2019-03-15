@@ -9,6 +9,12 @@ public class ListNode {
         this.value = value;
     }
 
+    ListNode setNext(ListNode nextNode) {
+        this.next = nextNode;
+        nextNode.prev = this;
+        return this;
+    }
+
     ListNode withNext(ListNode nextNode) {
         this.next = nextNode;
         nextNode.prev = this;
@@ -29,5 +35,10 @@ public class ListNode {
             count++;
         }
         return count;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
     }
 }

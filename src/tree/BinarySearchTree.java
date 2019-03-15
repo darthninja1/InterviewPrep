@@ -53,6 +53,19 @@ public class BinarySearchTree {
         return isBST(root.left) && isBST(root.right);
     }
 
+    static boolean search(TreeNode root, int value) {
+        if (root == null) {
+            return false;
+        }
+        if (root.value == value) {
+            return true;
+        } else if (root.value > value) {
+            return search(root.left, value);
+        } else {
+            return search(root.right, value);
+        }
+    }
+
     static TreeNode createBSTRecursive() {
         TreeNode root = insertRecursive(null, 33);
         insertRecursive(root, 20);
@@ -82,15 +95,19 @@ public class BinarySearchTree {
     }
 
     public static void main(String[] args) {
-        System.out.println("BST recursive: ");
+        System.out.print("BST recursive: ");
         TreeNode root = createBSTRecursive();
         System.out.println("\nHeight: " + height(root));
         System.out.println("isBST: " + isBST(root));
+        System.out.println("Find 40: " + search(root, 40));
+        System.out.println("Find 18: " + search(root, 18));
 
-        System.out.println("BST iterative: ");
+        System.out.print("\nBST iterative: ");
         root = createBSTIterative();
         System.out.println("Height: " + height(root));
         System.out.println("isBST: " + isBST(root));
+        System.out.println("Find 49: " + search(root, 49));
+        System.out.println("Find 87: " + search(root, 87));
 
         root = TreeNode.createTree();
         inOrderTraversalRecursive(root);

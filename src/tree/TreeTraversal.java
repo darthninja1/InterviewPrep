@@ -14,7 +14,7 @@ public class TreeTraversal {
         breadFirstIterative(root);
     }
 
-    private static void inOrderTraversalIterative(TreeNode root) {
+    static void inOrderTraversalIterative(TreeNode root) {
         Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode temp = root;
 
@@ -30,13 +30,13 @@ public class TreeTraversal {
         System.out.println();
     }
 
-    private static void inOrderTraversalRecursive(TreeNode root) {
+    static void inOrderTraversalRecursive(TreeNode root) {
         if (root.left != null) inOrderTraversalRecursive(root.left);
         System.out.print(root.value + " ");
         if (root.right != null) inOrderTraversalRecursive(root.right);
     }
 
-    private static void breadFirstIterative(TreeNode root) {
+    static void breadFirstIterative(TreeNode root) {
         Deque<TreeNode> queue = new ArrayDeque<>();
         queue.addFirst(root);
 

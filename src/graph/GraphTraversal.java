@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 import static graph.GraphNode.checkIfPathExists;
@@ -22,13 +23,13 @@ public class GraphTraversal {
         bNode.setAdjacent(Arrays.asList(createNode("C"), createNode("D")));
 
         GraphNode cNode = createNode("C");
-        cNode.setAdjacent(Arrays.asList(createNode("E")));
+        cNode.setAdjacent(Collections.singletonList(createNode("E")));
 
         GraphNode dNode = createNode("D");
         dNode.setAdjacent(Arrays.asList(createNode("F"), createNode("C")));
 
         GraphNode fNode = createNode("F");
-        fNode.setAdjacent(Arrays.asList(createNode("E")));
+        fNode.setAdjacent(Collections.singletonList(createNode("E")));
 
         System.out.println(checkIfPathExists("A", "E", new HashSet<>())); // true
         System.out.println(checkIfPathExists("C", "F", new HashSet<>())); // false

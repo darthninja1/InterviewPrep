@@ -68,7 +68,7 @@ public class MorseConverter {
         System.out.println(data);
     }
 
-    public static void convertToText(String morse, int index, String outputString) {
+    private static void convertToText(String morse, int index, String outputString) {
         if (index == morse.length()) {
             data.add(outputString);
             return;

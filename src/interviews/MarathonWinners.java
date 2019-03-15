@@ -19,7 +19,7 @@ public class MarathonWinners {
         System.out.println(Arrays.toString(getPositions(new int[]{4, 5, 0, -1, 1, 3})));
     }
 
-    static int[] getPositions(int[] winners) {
+    private static int[] getPositions(int[] winners) {
         Map<Integer/*Position*/, Integer /*Index*/> positionToIndexMap = new HashMap<>();
         boolean found1st = false;
         for (int i = 0; i < winners.length; ++i) {

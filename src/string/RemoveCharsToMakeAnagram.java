@@ -20,8 +20,8 @@ public class RemoveCharsToMakeAnagram {
             charStatus[str2.charAt(i) - 'a']--;
         }
         int sum = 0;
-        for (int i = 0; i < charStatus.length; i++) {
-            sum += Math.abs(charStatus[i]);
+        for (int status : charStatus) {
+            sum += Math.abs(status);
         }
         return sum;
     }

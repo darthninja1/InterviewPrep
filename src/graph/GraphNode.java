@@ -7,7 +7,7 @@ class GraphNode {
     String name;
     List<GraphNode> adjacent = Collections.emptyList();
 
-    GraphNode(String name) {
+    private GraphNode(String name) {
         this.name = name;
     }
 
@@ -38,11 +38,11 @@ class GraphNode {
         return name;
     }
 
-    public List<GraphNode> getAdjacent() {
+    List<GraphNode> getAdjacent() {
         return adjacent;
     }
 
-    public void setAdjacent(List<GraphNode> adjacent) {
+    void setAdjacent(List<GraphNode> adjacent) {
         this.adjacent = adjacent;
     }
 }

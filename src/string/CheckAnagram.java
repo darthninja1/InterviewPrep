@@ -19,8 +19,8 @@ public class CheckAnagram {
             charStatus[str1.charAt(i) - 'a']++;
             charStatus[str2.charAt(i) - 'a']--;
         }
-        for (int i = 0; i < charStatus.length; i++) {
-            if (charStatus[i] != 0) {
+        for (int status : charStatus) {
+            if (status != 0) {
                 return false;
             }
         }

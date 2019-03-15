@@ -23,18 +23,18 @@ public class TopologicalSort {
         bNode.setAdjacent(Arrays.asList(createNode("C"), createNode("D")));
 
         GraphNode cNode = createNode("C");
-        cNode.setAdjacent(Arrays.asList(createNode("E")));
+        cNode.setAdjacent(Collections.singletonList(createNode("E")));
 
         GraphNode dNode = createNode("D");
         dNode.setAdjacent(Arrays.asList(createNode("F"), createNode("C")));
 
         GraphNode fNode = createNode("F");
-        fNode.setAdjacent(Arrays.asList(createNode("E")));
+        fNode.setAdjacent(Collections.singletonList(createNode("E")));
 
         sort(new ArrayList<>(GraphNode.mapOfAllNodes.values()), new HashSet<>(), new ArrayDeque<>());
     }
 
-    static void sortHelper(GraphNode selected, Set<GraphNode> visited, Deque<GraphNode> stack) {
+    private static void sortHelper(GraphNode selected, Set<GraphNode> visited, Deque<GraphNode> stack) {
         if (visited.contains(selected)) {
             return;
         }
@@ -47,7 +47,7 @@ public class TopologicalSort {
         stack.push(selected);
     }
 
-    static void sort(List<GraphNode> nodes, Set<GraphNode> visited, Deque<GraphNode> stack) {
+    private static void sort(List<GraphNode> nodes, Set<GraphNode> visited, Deque<GraphNode> stack) {
         while (visited.size() < nodes.size()) {
             int n = random.nextInt(nodes.size());
             while (visited.contains(nodes.get(n))) {

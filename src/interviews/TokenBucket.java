@@ -11,7 +11,7 @@ public class TokenBucket {
     /**
      * Initializes a token bucket. A bucket gains a token every tokenAddMs, up to bucketSize.
      */
-    public TokenBucket(int tokenAddMs, int bucketSize) {
+    private TokenBucket(int tokenAddMs, int bucketSize) {
         this.tokenAddMs = tokenAddMs;
         this.bucketSize = bucketSize;
         this.currentTokensAvailable = bucketSize;
@@ -23,7 +23,7 @@ public class TokenBucket {
      *
      * @return number of tokens acquired
      */
-    public int acquireTokens(int numTokens) {
+    private int acquireTokens(int numTokens) {
 
         long currentTS = System.currentTimeMillis();
         long diff = currentTS - previousTimestamp;

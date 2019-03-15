@@ -6,8 +6,7 @@ import java.util.Deque;
 public class SinglyLinkedList {
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(20);
-        head.withNext(new ListNode(13)).withNext(new ListNode(90)).withNext(new ListNode(56));
+        ListNode head = createList();
         System.out.println("Length: " + head.length());
         System.out.print("Forward traversal iterative: ");
         forwardTraversal(head);
@@ -85,5 +84,11 @@ public class SinglyLinkedList {
             head = next;
         }
         return prev;
+    }
+
+    static ListNode createList() {
+        ListNode head = new ListNode(20);
+        head.withNext(new ListNode(13)).withNext(new ListNode(90)).withNext(new ListNode(56));
+        return head;
     }
 }

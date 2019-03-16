@@ -10,7 +10,7 @@ public class BinarySearch {
         System.out.println(search(array, 1));
     }
 
-    private static boolean search(final int[] array, int num) {
+    static int search(final int[] array, int num) {
         int startIndex = 0;
         int endIndex = array.length - 1;
         while (startIndex <= endIndex) {
@@ -20,9 +20,9 @@ public class BinarySearch {
             } else if (array[mid] < num) {
                 startIndex = mid + 1;
             } else {
-                return true;
+                return mid;
             }
         }
-        return false;
+        return -1;
     }
 }

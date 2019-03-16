@@ -21,6 +21,8 @@ public class ReversePolishNotation {
     }
 
     private static int computeRPNNaive(String[] arr) {
+        if (arr == null || arr.length == 0) throw new RuntimeException("error");
+
         Deque<Integer> stack = new ArrayDeque<>();
         for (String s : arr) {
             if (!"+-*/".contains(s)) {
@@ -50,11 +52,12 @@ public class ReversePolishNotation {
         return stack.pop();
     }
 
-    private static void registerOperator(RPNOperator op) {
+    static void registerOperator(RPNOperator op) {
         map.put(op.getOperator(), op);
     }
 
-    private static int computeRPN2(String[] arr) {
+    static int computeRPN2(String[] arr) {
+        if (arr == null || arr.length == 0) throw new RuntimeException("error");
         Deque<Integer> stack = new ArrayDeque<>();
         for (String s : arr) {
             if (!map.containsKey(s)) {
@@ -66,13 +69,13 @@ public class ReversePolishNotation {
         return stack.pop();
     }
 
-    interface RPNOperator {
+    public interface RPNOperator {
         String getOperator();
 
         void compute(Deque<Integer> stack);
     }
 
-    static class Add implements RPNOperator {
+    public static class Add implements RPNOperator {
 
         @Override
         public String getOperator() {
@@ -87,7 +90,7 @@ public class ReversePolishNotation {
         }
     }
 
-    static class Subtract implements RPNOperator {
+    public static class Subtract implements RPNOperator {
 
         @Override
         public String getOperator() {
@@ -106,7 +109,7 @@ public class ReversePolishNotation {
         }
     }
 
-    static class Multiply implements RPNOperator {
+    public static class Multiply implements RPNOperator {
 
         @Override
         public String getOperator() {
@@ -121,7 +124,7 @@ public class ReversePolishNotation {
         }
     }
 
-    static class Divide implements RPNOperator {
+    public static class Divide implements RPNOperator {
 
         @Override
         public String getOperator() {

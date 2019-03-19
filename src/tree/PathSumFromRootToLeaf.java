@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 // https://leetcode.com/problems/path-sum/
 // https://www.programcreek.com/2013/01/leetcode-path-sum/
+// http://www.geeksforgeeks.org/root-to-leaf-path-sum-equal-to-a-given-number/
 public class PathSumFromRootToLeaf {
     public static void main(String[] args) {
         TreeNode left = new TreeNode(5);

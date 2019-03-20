@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class IntegerToRomanNumerals {
-    static final TreeMap<Integer, String> treeMap = new TreeMap<>(Comparator.reverseOrder());
+    private static final TreeMap<Integer, String> treeMap = new TreeMap<>(Comparator.reverseOrder());
 
     static {
         treeMap.put(1, "I");
@@ -23,7 +23,7 @@ public class IntegerToRomanNumerals {
         treeMap.put(1000, "M");
     }
 
-    public static String intToRoman(int number) {
+    private static String intToRoman(int number) {
         StringBuilder sb = new StringBuilder();
         while (number > 0) {
             for (Map.Entry<Integer, String> e : treeMap.entrySet()) {

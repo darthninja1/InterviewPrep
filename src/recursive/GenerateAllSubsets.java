@@ -4,25 +4,24 @@ package recursive;
 // https://leetcode.com/problems/subsets/
 public class GenerateAllSubsets {
     public static void main(String[] args) {
-        allSubsetsRecursive(new int[]{1, 2, 3}, new Integer[3], 0);
-
+        allSubsetsRecursive(new int[]{1, 2, 3}, new boolean[3], 0);
         allSubsets(new int[]{1, 2, 3, 4});
     }
 
-    private static void allSubsetsRecursive(int[] numbers, Integer[] include, int index) {
+    private static void allSubsetsRecursive(int[] numbers, boolean[] include, int index) {
         if (index == numbers.length) {
             System.out.print("{ ");
             for (int i = 0; i < include.length; i++) {
-                if (include[i] != null) {
-                    System.out.print(include[i] + " ");
+                if (include[i]) {
+                    System.out.print(numbers[i] + " ");
                 }
             }
             System.out.println("}");
             return;
         } else {
-            include[index] = null;
+            include[index] = false;
             allSubsetsRecursive(numbers, include, index + 1);
-            include[index] = numbers[index];
+            include[index] = true;
             allSubsetsRecursive(numbers, include, index + 1);
         }
     }

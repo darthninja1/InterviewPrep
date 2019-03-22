@@ -15,6 +15,8 @@ public class Trie {
         System.out.println(t.startsWith("se"));
         System.out.println(t.startsWith("k"));
         System.out.println(t.startsWith("knowledge"));
+        t.delete("she");
+        t.delete("shore");
     }
 
     /**
@@ -64,6 +66,45 @@ public class Trie {
             node = temp;
         }
         return node.prefixCount;
+    }
+
+    /**
+     * Delete word from trie.
+     */
+    public boolean delete(String word) {
+        return delete(root, word, 0) != DeleteFlag.NOT_FOUND;
+    }
+
+    private DeleteFlag delete(TrieNode root, String word, int index) {
+        if (index == word.length()) {
+            if (!root.isWord) return DeleteFlag.NOT_FOUND; // only support deleting words
+            root.isWord = false; // word no longer exists
+            if (root.prefixCount != 0) { // does this node have children?
+                return DeleteFlag.SUCCESS;
+            } else {
+                return DeleteFlag.SUCCESS_DELETE_NODE;
+            }
+        }
+        int offset = word.charAt(index) - 'a';
+        TrieNode temp = root.children[offset];
+        if (temp == null) {
+            return DeleteFlag.NOT_FOUND;
+        }
+        DeleteFlag flag = delete(temp, word, index + 1);
+        if (flag != DeleteFlag.NOT_FOUND) {
+            root.prefixCount--;
+            if (flag == DeleteFlag.SUCCESS_DELETE_NODE) root.children[offset] = null;
+            if (root.prefixCount != 0) { // does this node have children?
+                return DeleteFlag.SUCCESS;
+            } else {
+                return DeleteFlag.SUCCESS_DELETE_NODE;
+            }
+        }
+        return DeleteFlag.NOT_FOUND;
+    }
+
+    enum DeleteFlag {
+        SUCCESS, SUCCESS_DELETE_NODE, NOT_FOUND;
     }
 
     private class TrieNode {

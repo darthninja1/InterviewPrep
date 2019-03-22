@@ -1,8 +1,5 @@
 package trie;
 
-import java.util.HashMap;
-import java.util.Map;
-
 // https://leetcode.com/problems/implement-trie-prefix-tree
 public class Trie {
     TrieNode root = new TrieNode();
@@ -14,6 +11,7 @@ public class Trie {
         t.insert("world");
         System.out.println(t.search("hell"));
         System.out.println(t.startsWith("hel"));
+        System.out.println(t.startsWith("ho"));
     }
 
     /**
@@ -23,8 +21,13 @@ public class Trie {
         TrieNode node = root;
         int i = 0;
         for (; i < word.length(); i++) {
-            Character c = word.charAt(i);
-            node = node.children.computeIfAbsent(c, k -> new TrieNode());
+            int offset = word.charAt(i) - 'a';
+            TrieNode temp = node.children[offset];
+            if (temp == null) {
+                temp = new TrieNode();
+                node.children[offset] = temp;
+            }
+            node = temp;
         }
         node.isWord = true;
     }
@@ -36,8 +39,8 @@ public class Trie {
         TrieNode node = root;
         int i = 0;
         for (; i < word.length(); i++) {
-            Character c = word.charAt(i);
-            TrieNode temp = node.children.get(c);
+            int offset = word.charAt(i) - 'a';
+            TrieNode temp = node.children[offset];
             if (temp == null) return false;
             node = temp;
         }
@@ -51,8 +54,8 @@ public class Trie {
         TrieNode node = root;
         int i = 0;
         for (; i < prefix.length(); i++) {
-            Character c = prefix.charAt(i);
-            TrieNode temp = node.children.get(c);
+            int offset = prefix.charAt(i) - 'a';
+            TrieNode temp = node.children[offset];
             if (temp == null) return false;
             node = temp;
         }
@@ -60,7 +63,7 @@ public class Trie {
     }
 
     private class TrieNode {
-        Map<Character, TrieNode> children = new HashMap<>();
+        TrieNode[] children = new TrieNode[26];
         boolean isWord;
     }
 }

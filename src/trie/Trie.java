@@ -6,12 +6,15 @@ public class Trie {
 
     public static void main(String[] args) {
         Trie t = new Trie();
-        t.insert("hello");
-        t.insert("hell");
-        t.insert("world");
-        System.out.println(t.search("hell"));
-        System.out.println(t.startsWith("hel"));
-        System.out.println(t.startsWith("ho"));
+        String[] wordsForInsert = {"she", "sells", "sea", "shore",
+                "know", "knowledge", "knowledges", "knowledgement"};
+        for (String word : wordsForInsert) {
+            t.insert(word);
+        }
+        System.out.println(t.search("sells"));
+        System.out.println(t.startsWith("se"));
+        System.out.println(t.startsWith("k"));
+        System.out.println(t.startsWith("knowledge"));
     }
 
     /**
@@ -27,6 +30,7 @@ public class Trie {
                 temp = new TrieNode();
                 node.children[offset] = temp;
             }
+            node.prefixCount++;
             node = temp;
         }
         node.isWord = true;
@@ -48,22 +52,23 @@ public class Trie {
     }
 
     /**
-     * Returns if there is any word in the trie that starts with the given prefix.
+     * Returns count of words in the trie that starts with the given prefix.
      */
-    public boolean startsWith(String prefix) {
+    public int startsWith(String prefix) {
         TrieNode node = root;
         int i = 0;
         for (; i < prefix.length(); i++) {
             int offset = prefix.charAt(i) - 'a';
             TrieNode temp = node.children[offset];
-            if (temp == null) return false;
+            if (temp == null) return 0;
             node = temp;
         }
-        return true;
+        return node.prefixCount;
     }
 
     private class TrieNode {
         TrieNode[] children = new TrieNode[26];
         boolean isWord;
+        int prefixCount;
     }
 }

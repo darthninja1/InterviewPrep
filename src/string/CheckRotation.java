@@ -9,7 +9,7 @@ public class CheckRotation {
 
     private static void isRotation(String s1, String s2) {
         s1 = s1 + s1;
-        if (s1.indexOf(s2) != -1) {
+        if (s1.contains(s2)) {
             System.out.println("Rotation");
         } else {
             System.out.println("Not rotation");

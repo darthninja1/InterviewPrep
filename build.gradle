@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'maven'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -25,4 +26,23 @@ sourceSets {
             srcDir 'test'
         }
     }
+}
+
+task createPom {
+    pom {
+        project {
+            groupId 'darthninja1'
+            artifactId 'InterviewPrep'
+            version '1.0.0'
+
+            inceptionYear '2019'
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+        }
+    }.writeTo("pom.xml")
 }

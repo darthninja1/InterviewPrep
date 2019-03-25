@@ -53,17 +53,25 @@ public class BinarySearchTree {
         return isBST(root.left) && isBST(root.right);
     }
 
-    static boolean search(TreeNode root, int value) {
+    static boolean isPresent(TreeNode root, int value) {
+        return find(root, value) != null;
+    }
+
+    static TreeNode find(TreeNode root, int value) {
         if (root == null) {
-            return false;
+            return null;
         }
         if (root.value == value) {
-            return true;
+            return root;
         } else if (root.value > value) {
-            return search(root.left, value);
+            return find(root.left, value);
         } else {
-            return search(root.right, value);
+            return find(root.right, value);
         }
+    }
+
+    static void deleteNode(TreeNode root, int num) {
+
     }
 
     static TreeNode createBSTRecursive() {
@@ -99,15 +107,15 @@ public class BinarySearchTree {
         TreeNode root = createBSTRecursive();
         System.out.println("\nHeight: " + height(root));
         System.out.println("isBST: " + isBST(root));
-        System.out.println("Find 40: " + search(root, 40));
-        System.out.println("Find 18: " + search(root, 18));
+        System.out.println("Find 40: " + isPresent(root, 40));
+        System.out.println("Find 18: " + isPresent(root, 18));
 
         System.out.print("\nBST iterative: ");
         root = createBSTIterative();
         System.out.println("Height: " + height(root));
         System.out.println("isBST: " + isBST(root));
-        System.out.println("Find 49: " + search(root, 49));
-        System.out.println("Find 87: " + search(root, 87));
+        System.out.println("Find 49: " + isPresent(root, 49));
+        System.out.println("Find 87: " + isPresent(root, 87));
 
         root = TreeNode.createTree();
         inOrderTraversalRecursive(root);

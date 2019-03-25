@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'com.google.guava', name: 'guava', version: 'r03'
+    compile group: 'com.google.guava', name: 'guava', version: '27.1-jre'
     testCompile 'junit:junit:4.12'
 }
 

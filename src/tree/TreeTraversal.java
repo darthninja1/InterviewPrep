@@ -12,6 +12,8 @@ public class TreeTraversal {
         inOrderTraversalIterative(root);
         System.out.println("\nBreadth First Traversal -");
         breadFirstIterative(root);
+        System.out.println("Recursive Pre-order Traversal -");
+        preOrderTraversalRecursive(root);
     }
 
     static void inOrderTraversalIterative(TreeNode root) {
@@ -34,6 +36,12 @@ public class TreeTraversal {
         if (root.left != null) inOrderTraversalRecursive(root.left);
         System.out.print(root.value + " ");
         if (root.right != null) inOrderTraversalRecursive(root.right);
+    }
+
+    static void preOrderTraversalRecursive(TreeNode root) {
+        System.out.print(root.value + " ");
+        if (root.left != null) preOrderTraversalRecursive(root.left);
+        if (root.right != null) preOrderTraversalRecursive(root.right);
     }
 
     static void breadFirstIterative(TreeNode root) {

@@ -5,45 +5,40 @@ import com.google.common.collect.Lists;
 import java.util.Collections;
 import java.util.List;
 
-public class MaxHeap {
+import static heap.MaxHeap.getLeftChild;
+import static heap.MaxHeap.getParent;
+import static heap.MaxHeap.getRightChild;
+
+public class MinHeap {
 
     private final List<Integer> nums;
 
-    public MaxHeap(List<Integer> list) {
+    public MinHeap(List<Integer> list) {
         this.nums = list;
-        maxHeapify(nums);
+        minHeapify(nums);
     }
 
     public static void main(String[] args) {
-        List<Integer> nums = Lists.newArrayList(1, 3, 36, 2, 19, 25, 100, 17, 7);
-        MaxHeap heap = new MaxHeap(nums);
-        System.out.println("Max: " + heap.getMax());
+        List<Integer> nums = Lists.newArrayList(64, 13, 36, 2, 19, 25, 100, 17, 7);
+        MinHeap heap = new MinHeap(nums);
+        System.out.println("Min: " + heap.getMin());
         System.out.println(heap.getHeapList());
-        System.out.println("Inserting 120");
-        heap.insert(120);
-        System.out.println("Max: " + heap.getMax());
+        System.out.println("Inserting 1");
+        heap.insert(1);
+        System.out.println("Min: " + heap.getMin());
         System.out.println(heap.getHeapList());
-        System.out.println("Removing max... ");
-        heap.removeMax();
+        System.out.println("Removing min... ");
+        heap.removeMin();
         System.out.println(heap.getHeapList());
         System.out.println("Inserting 33... ");
         heap.insert(33);
         System.out.println(heap.getHeapList());
+        System.out.println("Removing min... ");
+        heap.removeMin();
+        System.out.println(heap.getHeapList());
     }
 
-    static int getParent(int index) {
-        return index / 2;
-    }
-
-    static int getLeftChild(int index) {
-        return 2 * index + 1;
-    }
-
-    static int getRightChild(int index) {
-        return 2 * index + 2;
-    }
-
-    public static void maxHeapify(List<Integer> nums) {
+    public static void minHeapify(List<Integer> nums) {
         int n = nums.size();
         for (int i = n / 2 - 1; i >= 0; i--) {
             siftDown(nums, i, n);
@@ -53,21 +48,21 @@ public class MaxHeap {
     public static void siftDown(List<Integer> nums, int i, int end) {
         int left = getLeftChild(i);
         int right = getRightChild(i);
-        int largest = i;
-        if (left < end && nums.get(left) > nums.get(largest)) {
-            largest = left;
+        int smallest = i;
+        if (left < end && nums.get(left) < nums.get(smallest)) {
+            smallest = left;
         }
-        if (right < end && nums.get(right) > nums.get(largest)) {
-            largest = right;
+        if (right < end && nums.get(right) < nums.get(smallest)) {
+            smallest = right;
         }
-        if (largest != i) {
-            Collections.swap(nums, i, largest);
-            siftDown(nums, largest, end);
+        if (smallest != i) {
+            Collections.swap(nums, i, smallest);
+            siftDown(nums, smallest, end);
         }
     }
 
     // peek
-    int getMax() {
+    int getMin() {
         return nums.get(0);
     }
 
@@ -75,20 +70,20 @@ public class MaxHeap {
         return nums;
     }
 
-    int removeMax() {
-        int max = nums.get(0);
+    int removeMin() {
+        int min = nums.get(0);
         int last = nums.remove(nums.size() - 1);
         // Copy last element to index 0 and call heapify
         nums.set(0, last);
-        maxHeapify(nums);
-        return max;
+        minHeapify(nums);
+        return min;
     }
 
     void insert(int n) {
         nums.add(n);
         int index = nums.size() - 1;
         int parentIndex = getParent(index);
-        while (nums.get(index) > nums.get(parentIndex)) {
+        while (nums.get(index) < nums.get(parentIndex)) {
             Collections.swap(nums, index, parentIndex);
             index = parentIndex;
             parentIndex = getParent(index);

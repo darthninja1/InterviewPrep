@@ -70,8 +70,35 @@ public class BinarySearchTree {
         }
     }
 
-    static void deleteNode(TreeNode root, int num) {
+    private static int findMin(TreeNode node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node.value;
+    }
 
+    static TreeNode deleteNode(TreeNode root, int num) {
+        if (root == null) {
+            return null;
+        }
+        if (root.value > num) {
+            root.left = deleteNode(root.left, num);
+        } else if (root.value < num) {
+            root.right = deleteNode(root.right, num);
+        } else { // found node
+            if (root.left != null && root.right != null) {
+                // find smallest right node and promote it as root
+                int min = findMin(root.right);
+                deleteNode(root.right, min);
+                root.value = min;
+            } else if (root.left != null || root.right != null) {
+                // only 1 child, make root point to it
+                root = (root.left == null) ? root.right : root.left;
+            } else { // no children
+                root = null;
+            }
+        }
+        return root;
     }
 
     static TreeNode createBSTRecursive() {
@@ -117,15 +144,25 @@ public class BinarySearchTree {
         System.out.println("Find 49: " + isPresent(root, 49));
         System.out.println("Find 87: " + isPresent(root, 87));
 
-        root = TreeNode.createTree();
+        System.out.println("Deleting node 87...");
+        deleteNode(root, 87);
         inOrderTraversalRecursive(root);
-        System.out.println("\nHeight: " + height(root));
-        System.out.println("isBST: " + isBST(root));
+        System.out.println();
 
-        root = TreeNode.createBalancedTree();
+        System.out.println("Deleting node 33...");
+        deleteNode(root, 33);
         inOrderTraversalRecursive(root);
-        System.out.println("\nHeight: " + height(root));
-        System.out.println("isBST: " + isBST(root));
+        System.out.println();
+
+        System.out.println("Deleting node 5555...");
+        deleteNode(root, 5555);
+        inOrderTraversalRecursive(root);
+        System.out.println();
+
+        System.out.println("Deleting node 67...");
+        deleteNode(root, 67);
+        inOrderTraversalRecursive(root);
+        System.out.println();
     }
 }
 

@@ -22,7 +22,7 @@ public class Trie {
     /**
      * Inserts a word into the trie.
      */
-    public void insert(String word) {
+    public TrieNode insert(String word) {
         TrieNode node = root;
         int i = 0;
         for (; i < word.length(); i++) {
@@ -36,21 +36,27 @@ public class Trie {
             node = temp;
         }
         node.isWord = true;
+        return node;
     }
 
     /**
      * Returns if the word is in the trie.
      */
     public boolean search(String word) {
+        TrieNode node = getNode(word);
+        return node == null ? false : node.isWord;
+    }
+
+    public TrieNode getNode(String word) {
         TrieNode node = root;
         int i = 0;
         for (; i < word.length(); i++) {
             int offset = word.charAt(i) - 'a';
             TrieNode temp = node.children[offset];
-            if (temp == null) return false;
+            if (temp == null) return null;
             node = temp;
         }
-        return node.isWord;
+        return node;
     }
 
     /**

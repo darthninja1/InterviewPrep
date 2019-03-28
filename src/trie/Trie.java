@@ -106,10 +106,4 @@ public class Trie {
     enum DeleteFlag {
         SUCCESS, SUCCESS_DELETE_NODE, NOT_FOUND;
     }
-
-    private class TrieNode {
-        TrieNode[] children = new TrieNode[26];
-        boolean isWord;
-        int prefixCount;
-    }
 }

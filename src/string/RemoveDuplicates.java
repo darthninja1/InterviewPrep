@@ -29,9 +29,7 @@ public class RemoveDuplicates {
         Set<Character> set = new LinkedHashSet<>();
         for (int i = 0; i < s.length(); i++) {
             Character c = s.charAt(i);
-            if (!set.contains(c)) {
-                set.add(c);
-            }
+            set.add(c);
         }
         return Joiner.on("").join(set);
     }

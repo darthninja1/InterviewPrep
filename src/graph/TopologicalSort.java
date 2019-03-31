@@ -6,7 +6,7 @@ import static graph.GraphNode.createNode;
 
 // https://www.geeksforgeeks.org/topological-sorting/
 public class TopologicalSort {
-    static Random random = new Random();
+    private static Random random = new Random();
 
     public static void main(String[] args) {
          /*

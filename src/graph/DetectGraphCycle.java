@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,19 +24,20 @@ public class DetectGraphCycle {
         bNode.setAdjacent(Arrays.asList(createNode("C"), createNode("D")));
 
         GraphNode cNode = createNode("C");
-        cNode.setAdjacent(Arrays.asList(createNode("E")));
+        cNode.setAdjacent(Collections.singletonList(createNode("E")));
 
         GraphNode dNode = createNode("D");
         dNode.setAdjacent(Arrays.asList(createNode("F"), createNode("C")));
 
         GraphNode fNode = createNode("F");
-        fNode.setAdjacent(Arrays.asList(createNode("E")));
+        fNode.setAdjacent(Collections.singletonList(createNode("E")));
 
         System.out.println(checkCycle(aNode, new HashSet<>(), new HashSet<>()));
 
         // Introduces cycle
         GraphNode eNode = createNode("E");
-        eNode.setAdjacent(Arrays.asList(createNode("F")));
+        eNode.setAdjacent(Collections.singletonList(createNode("F")));
+        eNode.setAdjacent(Collections.singletonList(createNode("F")));
         System.out.println(checkCycle(aNode, new HashSet<>(), new HashSet<>()));
     }
 

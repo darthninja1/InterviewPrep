@@ -4,15 +4,15 @@ import java.util.*;
 
 class GraphNode {
     static Map<String, GraphNode> mapOfAllNodes = new HashMap<>();
-    String name;
-    List<GraphNode> adjacent = Collections.emptyList();
+    private String name;
+    private List<GraphNode> adjacent = Collections.emptyList();
 
     private GraphNode(String name) {
         this.name = name;
     }
 
     static GraphNode createNode(String name) {
-        return mapOfAllNodes.computeIfAbsent(name, n -> new GraphNode(n));
+        return mapOfAllNodes.computeIfAbsent(name, GraphNode::new);
     }
 
     static boolean checkIfPathExists(String s, String d, Set<GraphNode> visited) {

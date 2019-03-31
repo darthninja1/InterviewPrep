@@ -8,7 +8,7 @@ import java.util.Arrays;
 
  */
 
-public class Subset {
+public class SubsetSum {
     public static void main(String[] args) {
 //        System.out.println(subsetRecursive(new int[]{2, 4, 6, 10}, 16, 0));
 //        System.out.println(subsetRecursive(new int[]{2, 4, 6, 10, 3, 7}, 20, 0));

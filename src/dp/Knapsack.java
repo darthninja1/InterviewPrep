@@ -10,13 +10,13 @@ public class Knapsack {
             dp[i][0] = 0;
         }
         System.out.println(maximizeTopDown(profits, weights, dp, capacity, 0));
-        System.out.println(maximizeBottomUp(profits, weights, capacity, 0));
+        System.out.println(maximizeBottomUp(profits, weights, capacity));
 //        print(dp);
 
         int val[] = {22, 20, 15, 30, 24, 54, 21, 32, 18, 25};
         int wt[] = {4, 2, 3, 5, 5, 6, 9, 7, 8, 10};
         capacity = 30;
-        System.out.println(maximizeRecursive(val, wt, 30, 0));
+        System.out.println(maximizeRecursive(val, wt, capacity, 0));
 /*
         Integer[][] dp2 = new Integer[wt.length][capacity + 1];
         System.out.println(maximizeTopDown(val, wt, dp2, capacity, 0));
@@ -51,7 +51,7 @@ public class Knapsack {
         return dp[index][capacity];
     }
 
-    static int maximizeBottomUp(int[] profits, int[] weights, int capacity, int index) {
+    static int maximizeBottomUp(int[] profits, int[] weights, int capacity) {
         int[][] dp = new int[weights.length][capacity + 1];
         for (int i = 0; i < dp.length; i++) {
             dp[i][0] = 0;

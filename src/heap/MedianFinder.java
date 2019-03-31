@@ -19,7 +19,7 @@ public class MedianFinder {
         System.out.println(mf.findMedian());
     }
 
-    public void addNum(int num) {
+    private void addNum(int num) {
         // If left is empty or head of maxheap> num
         if (smallerNumbers.isEmpty() || smallerNumbers.peek() >= num) {
             smallerNumbers.offer(num);
@@ -34,7 +34,7 @@ public class MedianFinder {
         }
     }
 
-    public double findMedian() {
+    private double findMedian() {
         int largeHead = largerNumbers.size();
         int smallHead = smallerNumbers.size();
 

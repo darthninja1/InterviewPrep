@@ -12,17 +12,17 @@ public class Pangram {
 
     static String pangram(String s) {
         if (s == null) s = "";
-        int[] chars = new int[26];
+        boolean[] chars = new boolean[26];
         char[] s1 = s.toLowerCase().toCharArray();
         for (int i = 0; i < s1.length; i++) {
             if (s1[i] == ' ') {
                 continue;
             }
-            chars[s1[i] - 'a']++;
+            chars[s1[i] - 'a'] = true;
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < chars.length; i++) {
-            if (chars[i] == 0) {
+            if (!chars[i]) {
                 sb.append((char) (i + 'a'));
             }
         }

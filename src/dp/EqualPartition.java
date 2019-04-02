@@ -101,7 +101,7 @@ public class EqualPartition {
         return dp[arr.length - 1][halfSum];
     }
 
-    private static void print(boolean[][] dp) {
+    static void print(boolean[][] dp) {
         for (int i = 0; i < dp.length; i++) {
             for (int j = 0; j < dp[0].length; j++) {
                 System.out.print((dp[i][j] ? "T" : "F") + " ");

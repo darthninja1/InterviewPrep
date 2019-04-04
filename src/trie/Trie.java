@@ -2,7 +2,7 @@ package trie;
 
 // https://leetcode.com/problems/implement-trie-prefix-tree
 public class Trie {
-    TrieNode root = new TrieNode();
+    private TrieNode root = new TrieNode();
 
     public static void main(String[] args) {
         Trie t = new Trie();
@@ -17,6 +17,10 @@ public class Trie {
         System.out.println(t.startsWith("knowledge"));
         t.delete("she");
         t.delete("shore");
+    }
+
+    public TrieNode getRoot() {
+        return root;
     }
 
     /**

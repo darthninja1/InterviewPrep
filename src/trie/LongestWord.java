@@ -5,7 +5,7 @@ public class LongestWord {
 
     public static void main(String[] args) {
         System.out.println(longestWord(new String[]{"w", "wo", "wor", "worl", "world"}));
-        System.out.println(longestWord(new String[]{"a", "bananas", "app", "appl", "ap", "apply", "apple", "apples"}));
+        System.out.println(longestWord(new String[]{"a", "bananas", "app", "appl", "ap", "apply", "apple"}));
     }
 
     private static String longestWord(String[] words) {

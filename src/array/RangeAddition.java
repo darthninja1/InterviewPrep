@@ -30,6 +30,9 @@ public class RangeAddition {
     // O(n^2)
     private static int[] getModifiedArray2(int length, int[][] updates) {
         int[] arr = new int[length];
+        if (updates == null || updates.length == 0) {
+            return arr;
+        }
         for (int i = 0; i < updates.length; i++) {
             int start = updates[i][0];
             int end = updates[i][1];

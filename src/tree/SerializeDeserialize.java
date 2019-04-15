@@ -12,6 +12,8 @@ public class SerializeDeserialize {
         System.out.println(s = serialize(TreeNode.createTree()));
         TreeNode root = deserialize(s);
         breadFirstIterative(root);
+        root = deserialize2(s);
+        breadFirstIterative(root);
     }
 
     private static String serialize(TreeNode root) {
@@ -78,6 +80,33 @@ public class SerializeDeserialize {
                     idx = next;
                 }
             }
+        }
+        return root;
+    }
+
+    private static TreeNode deserialize2(String s) {
+        if (s.length() == 1 && s.charAt(0) == '\0') {
+            return null;
+        }
+        String[] arr = s.split(",");
+        TreeNode root = new TreeNode(Integer.valueOf(arr[0]));
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.addFirst(root);
+        int idx = 1;
+        while (!queue.isEmpty()) {
+            TreeNode temp = queue.removeLast();
+            if (arr[idx].charAt(0) != '\0') {
+                TreeNode left = new TreeNode(Integer.valueOf(arr[idx]));
+                temp.withLeftNode(left);
+                queue.addFirst(left);
+            }
+            idx++;
+            if (arr[idx].charAt(0) != '\0') {
+                TreeNode right = new TreeNode(Integer.valueOf(arr[idx]));
+                temp.withRightNode(right);
+                queue.addFirst(right);
+            }
+            idx++;
         }
         return root;
     }

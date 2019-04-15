@@ -20,7 +20,7 @@ public class SerializeDeserialize {
         StringBuilder sb = new StringBuilder();
         Deque<TreeNode> queue = new LinkedList<>();
         if (root == null) {
-            sb.append('\0');
+            sb.append('X');
         } else {
             queue.addFirst(root);
 
@@ -39,15 +39,15 @@ public class SerializeDeserialize {
                         queue.addFirst(null);
                     }
                 } else {
-                    sb.append('\0').append(',');
+                    sb.append('X').append(',');
                 }
             }
         }
         return sb.toString();
     }
 
-    private static TreeNode deserialize(String s) {
-        if (s.length() == 1 && s.charAt(0) == '\0') {
+    static TreeNode deserialize(String s) {
+        if (s.length() == 1 && s.charAt(0) == 'X') {
             return null;
         }
         int idx = s.indexOf(',');
@@ -60,7 +60,7 @@ public class SerializeDeserialize {
                 int next = s.indexOf(',', idx + 1);
                 if (next != -1) {
                     String num = s.substring(idx + 1, next);
-                    if (num.charAt(0) != '\0') {
+                    if (num.charAt(0) != 'X') {
                         TreeNode left = new TreeNode(Integer.valueOf(num));
                         temp.withLeftNode(left);
                         queue.addFirst(left);
@@ -72,7 +72,7 @@ public class SerializeDeserialize {
                 int next = s.indexOf(',', idx + 1);
                 if (next != -1) {
                     String num = s.substring(idx + 1, next);
-                    if (num.charAt(0) != '\0') {
+                    if (num.charAt(0) != 'X') {
                         TreeNode right = new TreeNode(Integer.valueOf(num));
                         temp.withRightNode(right);
                         queue.addFirst(right);
@@ -85,7 +85,7 @@ public class SerializeDeserialize {
     }
 
     private static TreeNode deserialize2(String s) {
-        if (s.length() == 1 && s.charAt(0) == '\0') {
+        if (s.length() == 1 && s.charAt(0) == 'X') {
             return null;
         }
         String[] arr = s.split(",");
@@ -95,13 +95,13 @@ public class SerializeDeserialize {
         int idx = 1;
         while (!queue.isEmpty()) {
             TreeNode temp = queue.removeLast();
-            if (arr[idx].charAt(0) != '\0') {
+            if (arr[idx].charAt(0) != 'X') {
                 TreeNode left = new TreeNode(Integer.valueOf(arr[idx]));
                 temp.withLeftNode(left);
                 queue.addFirst(left);
             }
             idx++;
-            if (arr[idx].charAt(0) != '\0') {
+            if (arr[idx].charAt(0) != 'X') {
                 TreeNode right = new TreeNode(Integer.valueOf(arr[idx]));
                 temp.withRightNode(right);
                 queue.addFirst(right);

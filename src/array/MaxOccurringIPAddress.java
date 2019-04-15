@@ -14,8 +14,25 @@ public class MaxOccurringIPAddress {
         String[] ips = new String[]{"1.1.1.1", "255.255.11.135", "255.255.111.35", "255.255.110.135",
                 "255.255.11.135", "255.255.98.135"};
         System.out.println(maxOccurringIP(ips));
+        System.out.println(boringImplmaxOccurringIP(ips));
+
         ips = new String[]{"1.1.1.1", "2.2.2.2", "1.1.100.1", "1.255.255.255"};
         System.out.println(maxOccurringIP(ips));
+        System.out.println(boringImplmaxOccurringIP(ips));
+    }
+
+    private static String boringImplmaxOccurringIP(String[] ips) {
+
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < ips.length; i++) {
+            map.put(ips[i], map.getOrDefault(ips[i], 0) + 1);
+        }
+        TreeMap<Integer, List<String>> reverseMap = new TreeMap<>(Comparator.reverseOrder());
+        for (Map.Entry<String, Integer> e : map.entrySet()) {
+            List<String> list = reverseMap.computeIfAbsent(e.getValue(), k -> new ArrayList<>());
+            list.add(e.getKey());
+        }
+        return reverseMap.firstEntry().getValue().stream().collect(Collectors.joining(", "));
     }
 
     private static String maxOccurringIP(String[] ips) {

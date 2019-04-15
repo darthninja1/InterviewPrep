@@ -15,7 +15,6 @@ public class MaxIPAddress {
     }
 
     private static String maxIP(String[] ips) {
-//        long[] numericIPs = new long[ips.length];
         long max = 0;
         String maxString = "";
         for (int i = 0; i < ips.length; i++) {

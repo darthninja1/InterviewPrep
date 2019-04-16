@@ -1,5 +1,7 @@
 package number;
 
+import static number.PowerOf.logbase;
+
 public class PowerOfFour {
     public static void main(String[] args) {
         powerOf4(64);
@@ -10,7 +12,7 @@ public class PowerOfFour {
     }
 
     private static double logbase4(int num) {
-        return Math.log(num) / Math.log(4);
+        return logbase(num, 4);
     }
 
     private static void powerOf4(int num) {

@@ -10,7 +10,7 @@ public class LongestUniqueSubstring {
         System.out.println(lengthOfLongestSubstring(",,*(2e$,"));
     }
 
-    static int lengthOfLongestSubstring(String s) {
+    private static int lengthOfLongestSubstring(String s) {
         if (s == null || s.length() == 0) return 0;
         char[] array = s.toCharArray();
         int[] charCount = new int[256];
@@ -20,7 +20,7 @@ public class LongestUniqueSubstring {
         int endIndex = 1;
         charCount[array[startIndex]] = 1;
         while (endIndex < array.length && startIndex < array.length) {
-            Character endChar = array[endIndex];
+            char endChar = array[endIndex];
             if (charCount[endChar] == 0) {
                 charCount[endChar] = 1;
                 endIndex++;

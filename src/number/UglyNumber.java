@@ -2,6 +2,7 @@ package number;
 
 // https://leetcode.com/problems/ugly-number/
 // https://leetcode.com/problems/ugly-number-ii/
+// http://www.zrzahid.com/nth-ugly-number/
 public class UglyNumber {
     public static void main(String[] args) {
         System.out.println(uglyNumber(10));

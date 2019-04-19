@@ -3,8 +3,10 @@ package string;
 import java.util.HashMap;
 import java.util.Map;
 
+// https://www.programcreek.com/2013/02/longest-substring-which-contains-2-unique-characters/
 public class LongestSubstringKUnique {
     public static void main(String[] args) {
+        System.out.println(longest("aaabcaabbbbccccbbbbeeeeebbbbebeb", 2));
         System.out.println(longest("abcbbbbcccbdddadacb", 2));
         System.out.println(longest("ab", 2));
         System.out.println(longest("ab", 10));

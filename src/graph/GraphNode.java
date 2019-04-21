@@ -33,6 +33,27 @@ class GraphNode {
         return false;
     }
 
+    static boolean checkIfPathExistsBFS(String s, String d) {
+        GraphNode src = createNode(s);
+        GraphNode dest = createNode(d);
+        Queue<GraphNode> queue = new LinkedList<>();
+        Set<GraphNode> visited = new HashSet<>();
+        if (src == dest) {
+            return true;
+        }
+        queue.add(src);
+        while (!queue.isEmpty()) {
+            GraphNode node = queue.remove();
+
+            visited.add(node);
+            if (node == dest) {
+                return true;
+            }
+            node.getAdjacent().stream().filter(n -> !visited.contains(n)).forEach(queue::add);
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return name;

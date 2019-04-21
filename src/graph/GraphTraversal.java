@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 
 import static graph.GraphNode.checkIfPathExists;
+import static graph.GraphNode.checkIfPathExistsBFS;
 import static graph.GraphNode.createNode;
 
 public class GraphTraversal {
@@ -34,6 +35,10 @@ public class GraphTraversal {
         System.out.println(checkIfPathExists("A", "E", new HashSet<>())); // true
         System.out.println(checkIfPathExists("C", "F", new HashSet<>())); // false
         System.out.println(checkIfPathExists("D", "E", new HashSet<>())); // true
+
+        System.out.println(checkIfPathExistsBFS("A", "E")); // true
+        System.out.println(checkIfPathExistsBFS("C", "F")); // false
+        System.out.println(checkIfPathExistsBFS("D", "E")); // true
     }
 
 }

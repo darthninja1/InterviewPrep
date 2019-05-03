@@ -10,9 +10,9 @@ Input: N * 2 string matrix, where N is the number of records(Student – Marks)
  */
 public class StudentWithHighestAverage {
     public static void main(String[] args) {
-        String scores[][] = {{"jerry", "65"}, {"bob", "91"}, {"jerry", "23"}, {"Eric", "83"}};
+        String[][] scores = {{"jerry", "65"}, {"bob", "91"}, {"jerry", "23"}, {"Eric", "83"}};
         System.out.println(findStudent(scores));
-        String students[][] = {{"jerry", "10"}, {"bob", "20"}, {"jerry", "20"}, {"jerry", "30"}, {"Eric", "13"}};
+        String[][] students = {{"jerry", "10"}, {"bob", "20"}, {"jerry", "20"}, {"jerry", "30"}, {"Eric", "13"}};
         System.out.println(findStudent(students));
     }
 

@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '27.1-jre'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
     testCompile 'junit:junit:4.12'
 }
 
